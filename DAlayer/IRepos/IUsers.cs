@@ -11,6 +11,15 @@ namespace DAlayer.IRepos
     {
         // Abstract methods for Curd opes for users
         // async & await --> asynchrous
-        Task AddUsers(UsersModel data);   
+        Task<bool> AddUsers(UsersModel data);
+        // display users
+
+        Task<List<UsersModel>> GetUsers();
+
+
+        // get user by id
+        Task<UsersModel> GetUserByID(int ID);
+        Task<bool> UpdateUsers(UsersModel data);
+
     }
 }
