@@ -68,5 +68,24 @@ namespace DAlayer.Repos
             //save
         }
 
+        public async Task<bool> DeleteUsers(int ID)
+        {
+
+            var founddata = await _db.Users.FindAsync(ID);
+
+            if (founddata != null)
+            {
+                _db.Users.Remove(founddata);
+                int no = await _db.SaveChangesAsync();
+                if (no > 0)
+                {
+                    return true;
+                }
+
+            }
+
+            return false;
+        }
+
     }
 }

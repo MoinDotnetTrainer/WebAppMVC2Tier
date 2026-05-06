@@ -1,0 +1,44 @@
+﻿@model DAlayer.Models.Products
+
+@{
+    ViewData["Title"] = "Create Product";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4>Create Product</h4>
+        </div>
+
+        <div class="card-body">
+            <form asp-action="Addproducts" method="post">
+
+                <div class="mb-3">
+                    <label asp-for="ProductName" class="form-label"></label>
+                    <input asp-for="ProductName" class="form-control" placeholder="Enter product name" />
+                    </div>
+
+                <div class="mb-3">
+                    <label asp-for="Qty" class="form-label"></label>
+                    <input asp-for="Qty" class="form-control" placeholder="Enter price" />
+                      </div>
+
+                <div class="mb-3">
+                    <label asp-for="price" class="form-label"></label>
+                    <input asp-for="price" class="form-control" placeholder="Enter quantity" />
+                     </div>
+
+
+
+                <button type="submit" class="btn btn-success">
+                    Submit
+                </button>
+
+                <a asp-action="getProducts" class="btn btn-secondary ms-2">
+                    Cancel
+                </a>
+
+            </form>
+        </div>
+    </div>
+</div>

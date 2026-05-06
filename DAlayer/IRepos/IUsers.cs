@@ -13,13 +13,11 @@ namespace DAlayer.IRepos
         // async & await --> asynchrous
         Task<bool> AddUsers(UsersModel data);
         // display users
-
         Task<List<UsersModel>> GetUsers();
-
-
         // get user by id
         Task<UsersModel> GetUserByID(int ID);
         Task<bool> UpdateUsers(UsersModel data);
+        Task<bool> DeleteUsers(int ID);
 
     }
 }

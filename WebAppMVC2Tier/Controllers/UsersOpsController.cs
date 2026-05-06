@@ -57,5 +57,25 @@ namespace WebAppMVC2Tier.Controllers
             }
             return View();
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int ID)
+        {
+            var res = await _Iuser.GetUserByID(ID);
+            return View(res);
+        }
+
+
+        [HttpPost,ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirm(int ID)
+        {
+            var result = await _Iuser.DeleteUsers(ID);
+            if (result)
+            {
+                return RedirectToAction("DisplayUsers");
+            }
+            return View();
+        }
     }
 } 

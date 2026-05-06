@@ -15,5 +15,7 @@ namespace DAlayer.Models
         //connection string
 
         public DbSet<UsersModel> Users { get; set; }
+        public DbSet<Products> Products { get; set; }
+        public DbSet<Books> Books { get; set; }
     }
 }

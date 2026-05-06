@@ -17,6 +17,8 @@ namespace WebAppMVC2Tier
     options.UseSqlServer(builder.Configuration.GetConnectionString("constr")));
 
             builder.Services.AddScoped<DAlayer.IRepos.IUsers, DAlayer.Repos.UsersBl>();
+            builder.Services.AddScoped<DAlayer.IRepos.IProducts, DAlayer.Repos.ProductsBl>();
+            builder.Services.AddScoped<DAlayer.IRepos.Ibooks, DAlayer.Repos.BooksBl>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
