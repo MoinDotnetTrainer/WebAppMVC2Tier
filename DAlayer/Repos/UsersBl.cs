@@ -87,5 +87,12 @@ namespace DAlayer.Repos
             return false;
         }
 
+        public async Task<bool> Login(LoginModel data)
+        {
+
+            var result = await (from s in _db.Users select s).AnyAsync(x => x.Email == data.Email && x.Password == data.Password);
+            return result;
+        }
+
     }
 }

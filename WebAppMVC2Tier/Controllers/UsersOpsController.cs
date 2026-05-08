@@ -41,7 +41,8 @@ namespace WebAppMVC2Tier.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Edit(int ID) {
+        public async Task<IActionResult> Edit(int ID)
+        {
             var res = await _Iuser.GetUserByID(ID);
             return View(res);
         }
@@ -67,7 +68,7 @@ namespace WebAppMVC2Tier.Controllers
         }
 
 
-        [HttpPost,ActionName("Delete")]
+        [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirm(int ID)
         {
             var result = await _Iuser.DeleteUsers(ID);
@@ -77,5 +78,39 @@ namespace WebAppMVC2Tier.Controllers
             }
             return View();
         }
+
+        public async Task<IActionResult> Authenticate(LoginModel data)
+        {
+            bool res = await _Iuser.Login(data);
+            if (res == true)
+            {
+                return RedirectToAction("Homepage");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        public IActionResult Homepage() {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Validations()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Validations(validateData data)
+        {
+            if (ModelState.IsValid)  // tf
+            {
+                return View();
+            }
+            return View();
+        }
+
     }
-} 
+}

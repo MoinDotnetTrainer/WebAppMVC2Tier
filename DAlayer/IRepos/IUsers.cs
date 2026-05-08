@@ -19,5 +19,7 @@ namespace DAlayer.IRepos
         Task<bool> UpdateUsers(UsersModel data);
         Task<bool> DeleteUsers(int ID);
 
+        Task<bool> Login(LoginModel data);
+
     }
 }
