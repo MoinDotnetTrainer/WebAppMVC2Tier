@@ -38,7 +38,7 @@ namespace WebAppMVC2Tier
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=usersops}/{action=Authenticate}/{id?}");
 
             app.Run();
         }

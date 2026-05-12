@@ -1,0 +1,21 @@
+﻿@using WebAppMVC2Tier.Controllers
+@model Xyz
+@{
+    ViewData["Title"] = "Page4";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h1>Page4</h1>
+
+
+  <table>
+      @foreach (var item in ViewData["res"] as List<Xyz>)
+{
+     <tr>
+         <td>
+             @item.ID +""+ @item.Name
+             </td>
+     </tr>
+}
+
+  </table>
