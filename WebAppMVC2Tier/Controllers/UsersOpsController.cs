@@ -79,21 +79,46 @@ namespace WebAppMVC2Tier.Controllers
             return View();
         }
 
+
+        [HttpGet]
+        public IActionResult Authenticate()
+        {
+            return View();
+        }
+        [HttpPost]
         public async Task<IActionResult> Authenticate(LoginModel data)
         {
             bool res = await _Iuser.Login(data);
             if (res == true)
             {
+                HttpContext.Session.SetString("mykey", data.Email);
+                HttpContext.Session.SetInt32("myvalue", 123);
+
+                CookieOptions options = new CookieOptions
+                {
+                    Expires = DateTime.Now.AddMonths(30)
+                };
+
+                Response.Cookies.Append("Username", "Moin", options);
                 return RedirectToAction("Homepage");
             }
             else
             {
-                return View();
+
+
+                TempData["errormsg"] = "Credentials Incorect!";
+                return PartialView("ErrorPartial");
             }
         }
 
-        public IActionResult Homepage() {
-            return View();
+        public IActionResult Homepage()
+        {
+            if (HttpContext.Session.GetString("mykey") != null)
+            {
+                ViewBag.res = HttpContext.Session.GetString("mykey");
+                return View();
+            }
+            return RedirectToAction("Authenticate");
         }
 
         [HttpGet]
@@ -110,6 +135,13 @@ namespace WebAppMVC2Tier.Controllers
                 return View();
             }
             return View();
+        }
+
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Authenticate");
         }
 
     }

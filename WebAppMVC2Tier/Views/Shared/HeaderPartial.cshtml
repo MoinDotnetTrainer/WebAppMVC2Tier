@@ -1,0 +1,54 @@
+﻿@inject IHttpContextAccessor httpcontextaccessor
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                MyMVCApp
+            </a>
+
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse"
+                 id="navbarNav">
+
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" asp-action="Homepage" asp-controller="usersops">
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Validations" asp-controller="usersops">
+                            Validations
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Page1" asp-controller="Statetechnique">
+                            State Ex
+                        </a>
+                    </li>
+
+                     <li class="nav-item">
+                        <a class="nav-link" asp-action="Logout" asp-controller="usersops">
+                           Logout
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            @httpcontextaccessor.HttpContext.Session.GetString("mykey")
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>

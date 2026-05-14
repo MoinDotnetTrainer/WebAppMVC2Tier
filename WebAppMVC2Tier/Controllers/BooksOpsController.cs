@@ -2,9 +2,11 @@
 using DAlayer.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Operations;
+using WebAppMVC2Tier.Models;
 
 namespace WebAppMVC2Tier.Controllers
 {
+    [SetSession]
     public class BooksOpsController : Controller
     {
         public readonly Ibooks _ibooks;

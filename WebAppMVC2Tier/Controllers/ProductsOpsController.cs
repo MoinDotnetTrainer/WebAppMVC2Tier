@@ -1,6 +1,7 @@
 ﻿using DAlayer.IRepos;
 using DAlayer.Models;
 using Microsoft.AspNetCore.Mvc;
+using WebAppMVC2Tier.Models;
 
 namespace WebAppMVC2Tier.Controllers
 {
@@ -12,6 +13,8 @@ namespace WebAppMVC2Tier.Controllers
             _iproducts = iproducts;
         }
 
+
+        [SetSession]
         [HttpGet]
         public IActionResult Addproducts()
         {
